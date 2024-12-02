@@ -15,4 +15,5 @@ import com.example.heimadianping.entity.Shop;
 public interface IShopService extends IService<Shop> {
 
 
+	Result queryById(Long id);
 }

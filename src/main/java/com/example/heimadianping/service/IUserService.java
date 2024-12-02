@@ -12,11 +12,14 @@ import javax.servlet.http.HttpSession;
  *  服务类
  * </p>
  *
- * @author 虎哥
+ * @author sy
  * @since 2021-12-22
  */
 public interface IUserService extends IService<User> {
 
+	Result sendcode(String phone, HttpSession session);
 
 
+
+	Result login(LoginFormDTO loginForm, HttpSession session);
 }

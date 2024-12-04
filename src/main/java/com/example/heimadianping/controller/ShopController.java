@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.heimadianping.dto.Result;
 import com.example.heimadianping.entity.Shop;
 import com.example.heimadianping.service.IShopService;
+import com.example.heimadianping.utils.CacheClient;
 import com.example.heimadianping.utils.SystemConstants;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +25,8 @@ public class ShopController {
 
     @Resource
     public IShopService shopService;
+
+
 
     /**
      * 根据id查询商铺信息
@@ -55,9 +58,8 @@ public class ShopController {
      */
     @PutMapping
     public Result updateShop(@RequestBody Shop shop) {
-        // 写入数据库
-        shopService.updateById(shop);
-        return Result.ok();
+
+        return shopService.update(shop);
     }
 
     /**

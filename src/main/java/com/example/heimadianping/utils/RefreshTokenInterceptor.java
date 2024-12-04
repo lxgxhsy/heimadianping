@@ -33,16 +33,14 @@ public class RefreshTokenInterceptor implements HandlerInterceptor {
 
 		String token = request.getHeader("authorization");
 		if(StrUtil.isBlank(token)){
-			response.setStatus(401);
-			return false;
+			return true;
 		}
 		String key = RedisConstants.LOGIN_USER_KEY + token;
 		Map<Object,Object> userMap = stringRedisTemplate.opsForHash()
 				.entries(key);
 
 		if(userMap.isEmpty()){
-			response.setStatus(401);
-			return false;
+			return true;
 		}
 		UserDTO userDTO = BeanUtil.fillBeanWithMap(userMap, new UserDTO(), false);
 

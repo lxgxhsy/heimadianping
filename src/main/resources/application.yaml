@@ -24,6 +24,6 @@ mybatis-plus:
   type-aliases-package: com.example.heimadianping.entity # 别名扫描包
 logging:
   level:
-    com.hmdp: debug
+    com.example.heimadianping: debug
   pattern:
     dateformat: mm:ss.SSS

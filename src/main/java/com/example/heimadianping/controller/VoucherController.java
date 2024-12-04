@@ -4,6 +4,7 @@ package com.example.heimadianping.controller;
 import com.example.heimadianping.dto.Result;
 import com.example.heimadianping.entity.Voucher;
 import com.example.heimadianping.service.IVoucherService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -15,6 +16,7 @@ import javax.annotation.Resource;
  *
  * @author sy
  */
+@Slf4j
 @RestController
 @RequestMapping("/voucher")
 public class VoucherController {
@@ -51,6 +53,7 @@ public class VoucherController {
      */
     @GetMapping("/list/{shopId}")
     public Result queryVoucherOfShop(@PathVariable("shopId") Long shopId) {
+        log.info("shopId: {},",shopId);
         return voucherService.queryVoucherOfShop(shopId);
     }
 }

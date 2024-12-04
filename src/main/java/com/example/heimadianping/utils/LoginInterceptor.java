@@ -1,18 +1,11 @@
 package com.example.heimadianping.utils;
 
-import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.util.StrUtil;
-import com.example.heimadianping.dto.UserDTO;
-import org.springframework.beans.BeanUtils;
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.lang.Nullable;
+
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
+
 
 /**
  * @Author: shiyong

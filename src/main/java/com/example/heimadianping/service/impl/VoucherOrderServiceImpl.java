@@ -9,6 +9,7 @@ import com.example.heimadianping.mapper.VoucherOrderMapper;
 import com.example.heimadianping.service.ISeckillVoucherService;
 import com.example.heimadianping.service.IVoucherOrderService;
 import com.example.heimadianping.utils.RedisIdWorker;
+import com.example.heimadianping.utils.SimpleRedisLock;
 import com.example.heimadianping.utils.UserHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
@@ -80,10 +81,22 @@ public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, Vou
 		}
 
 		Long userId = UserHolder.getUser().getId();
-		synchronized (userId.toString().intern()) {
-			IVoucherOrderService proxy = (IVoucherOrderService)AopContext.currentProxy();
-			return proxy.createVoucherOrder(voucherId);
+		//创建锁对象
+		SimpleRedisLock lock = new SimpleRedisLock("order:" + userId, stringRedisTemplate);
+        //获取锁
+		boolean isLock = lock.tryLock(1200);
+         //没有成功
+		if(!isLock){
+			return Result.fail("一个人只能下一单");
 		}
+		try {
+			//获取代理对象(事务)
+			IVoucherOrderService proxy = (IVoucherOrderService) AopContext.currentProxy();
+			return proxy.createVoucherOrder(voucherId);
+		}finally {
+			lock.unlock();
+		}
+
 	}
 
 

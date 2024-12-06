@@ -15,5 +15,11 @@ import com.example.heimadianping.entity.Blog;
 public interface IBlogService extends IService<Blog> {
 
 
+	Result queryBlogById(Long id);
 
+
+	Result queryBlogLikes(Long id);
+
+
+	Result likeBlog(Long id);
 }

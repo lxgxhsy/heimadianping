@@ -3,7 +3,7 @@ package com.example.heimadianping.utils;
 import com.example.heimadianping.dto.UserDTO;
 
 /**
- * @Author: shiyong
+ * @Author: sy
  * @CreateTime: 2024-12-01
  * @Description: 获取用户上下文
  * @Version: 1.0

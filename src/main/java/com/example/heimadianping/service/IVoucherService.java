@@ -9,7 +9,7 @@ import com.example.heimadianping.entity.Voucher;
  *  服务类
  * </p>
  *
- * @author 虎哥
+ * @author sy
  * @since 2021-12-22
  */
 public interface IVoucherService extends IService<Voucher> {

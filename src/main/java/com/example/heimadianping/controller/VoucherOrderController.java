@@ -20,6 +20,7 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("/voucher-order")
 public class VoucherOrderController {
+
     @Resource
     private IVoucherOrderService voucherOrderService;
 

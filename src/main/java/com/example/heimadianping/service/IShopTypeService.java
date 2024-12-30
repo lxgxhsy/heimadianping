@@ -8,7 +8,7 @@ import com.example.heimadianping.entity.ShopType;
  *  服务类
  * </p>
  *
- * @author 虎哥
+ * @author sy
  * @since 2021-12-22
  */
 public interface IShopTypeService extends IService<ShopType> {

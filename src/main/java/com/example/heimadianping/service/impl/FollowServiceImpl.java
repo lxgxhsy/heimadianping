@@ -1,6 +1,7 @@
 package com.example.heimadianping.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.heimadianping.dto.Result;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -24,7 +26,7 @@ import java.util.stream.Collectors;
  * 服务实现类
  * </p>
  *
- * @author 虎哥
+ * @author sy
  * @since 2021-12-22
  */
 @Service
@@ -62,7 +64,6 @@ public class FollowServiceImpl extends ServiceImpl<FollowMapper, Follow> impleme
 				// 把关注用户的id从Redis集合中移除
 				stringRedisTemplate.opsForSet().remove(key,followUserId.toString());
 			}
-
 		}
 
 
@@ -98,6 +99,8 @@ public class FollowServiceImpl extends ServiceImpl<FollowMapper, Follow> impleme
 				.stream()
 				.map(user -> BeanUtil.copyProperties(user, UserDTO.class))
 				.collect(Collectors.toList());
+
+
 		return Result.ok(users);
 	}
 }

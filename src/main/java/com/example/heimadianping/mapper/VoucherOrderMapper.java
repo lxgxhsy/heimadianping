@@ -8,7 +8,7 @@ import com.example.heimadianping.entity.VoucherOrder;
  *  Mapper 接口
  * </p>
  *
- * @author 虎哥
+ * @author sy
  * @since 2021-12-22
  */
 public interface VoucherOrderMapper extends BaseMapper<VoucherOrder> {
